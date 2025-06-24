@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelListing.API.Data;
 
@@ -63,6 +64,18 @@ public class HotelListingDbContextInitializer
         if (!_context.Hotels.Any())
         {
             await _context.Hotels.AddRangeAsync(hotels);
+            await _context.SaveChangesAsync();
+        }
+
+        var roles = new List<IdentityRole>()
+        {
+            new (){Name = Constants.Roles.Admin, NormalizedName = Constants.Roles.Admin.ToUpper()},
+            new (){Name = Constants.Roles.User, NormalizedName = Constants.Roles.User.ToUpper()},
+        };
+
+        if (!_context.Roles.Any())
+        {
+            await _context.Roles.AddRangeAsync(roles);
             await _context.SaveChangesAsync();
         }
     }

@@ -7,9 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HotelListing.API.Controllers;
 
-[Route("api/[controller]")]
-[ApiController]
-public class HotelsController : ControllerBase
+public class HotelsController : ApiControllerBase
 {
     private readonly IMapper _mapper;
     private readonly IHotelsRepository _hotelsRepository;

@@ -7,9 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HotelListing.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CountriesController : ControllerBase
+    public class CountriesController : ApiControllerBase
     {
         private readonly IMapper _mapper;
         private readonly ICountriesRepository _countriesRepository;
